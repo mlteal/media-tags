@@ -1,10 +1,13 @@
 === Media Tags ===
-Contributors: Paul Menard
+Contributors: pmenard
 Donate link: http://www.codehooligans.com/donations/
 Tags: media-tags, media tags, media, tags, images, attachments, documents, taxonomy, shortcode, permalinks, role management, bulk admin, gallery
-Requires at least: 3.0
-Tested up to: 3.1
-Stable tag: 3.0.3
+Requires at least: 3.9
+Tested up to: 4.2
+Stable tag: 3.2.0.2
+License: GPLv2
+License URI: http://www.opensource.org/licenses/GPL-2.0
+
 
 == Description ==
 
@@ -54,8 +57,76 @@ The FAQ section has been written as a Help section within the plugin's settings 
 
 == Changelog == 
 
+= 3.2.0.2 =
+2014-03-25
+* Updates minimum WP requirements, Test up to, etc.
+* Added Serbian translation files. Thanks to Borisa Djuraskovic from http://www.webhostinghub.com
+
+= 3.2.0.1 =
+2014-04-23
+* Corrected issue where calls to get_attachments_by_media_tags() function where properly processing.
+
+= 3.2 =
+2014-04-21
+* Converted older get_posts query style for media-tags shortcode to use WP_Query object. A new shortcode parameter query="wp_query" can be used to force specific shortcodes to use WP_Query. Or set define('MEDIA_TAGS_QUERY', 'wp_query') in your wp-config.php
+* Added new shortcode for multiple post_parent ID. post_parent="1,16,32" or for current post use post_parent="this" so you don't have to hard code the post->ID
+* Update to Roles Management screen to show users by Roles tab. 
+
+= 3.1.2.1 = 
+2013-09-08
+* Fixed issue with metabox for media-tags showing on all post types. Thanks @phy9pas
+
+
+= 3.1.2 = 
+2013-03-20
+* Bug fix for sanitizing Media-Tags slug. 
+http://wordpress.org/support/topic/media-tags-slug-sanitizing-not-working-on-special-characters
+
+= 3.1.1 = 
+2012-12-14
+* Bug fixes for WordPress 3.5 Media popup screen. Removed Media-Tags logic. Will add in filtering once new code is converted to new media system. 
+
+= 3.1 = 
+2012-12-14
+* Bug fixes for WordPress 3.5 Bulk Media-Tags management screen
+
+= 3.0.5 =
+2011-08-03
+* Bug fixes. All bug fixes were received via posts from the wordpress.org forums by alx359. Thanks to alx359 for all the details provided including plugin filename and line numbers. 
+
+http://wordpress.org/support/topic/plugin-media-tags-library-bulk-delete-tags-fix?replies=2
+http://wordpress.org/support/topic/plugin-media-tags-get_attachments_by_media_tags-twice-offset-fix?replies=2
+http://wordpress.org/support/topic/plugin-media-tags-media-library-inline-fix?replies=5
+http://wordpress.org/support/topic/plugin-media-tags-row-count-fix?replies=3
+http://wordpress.org/support/topic/plugin-media-tags-some-visual-aid-tags-being-applied-fix?replies=1
+http://wordpress.org/support/topic/media-library-diagonal-alignment-fix?replies=1
+http://wordpress.org/support/topic/plugin-media-tags-usabilility-fix?replies=4
+
+coming in the next release:
+
+1. Bulk Admin on the upload panel. I know this is a much requested item.
+2. Ability to show all untagged items. Basically show all attachments without media-tags. 
+
+
+= 3.0.4 =
+* Bugs fixed
+Fixed hard-coded /wp-content/ path in the pugin. Thanks to justinph for to support solution http://wordpress.org/support/topic/plugin-media-tags-doesnt-work-if-you-dont-use-wp-contents
+
+Fixed conflict on the Media Library page when you attempt to Attach a media item to a page. There is some ugly JavaScript used by WordPress which was picking up one of the Media-tags radio buttons. Added some code to hide the Media-Tags elements. And posted a trac ticket. Thanks to jc364 for bringing this to my attention and providing the needed details. http://wordpress.org/support/topic/plugin-media-tags-not-able-to-attach-media-to-page
+
+Fixed an issue with some legacy code which prevented assigning or creating tags of pure numbers. Thanks to Tom who posted that via my blog.
+http://www.codehooligans.com/projects/wordpress/media-tags/#comment-81887
+
+Fixed a compatibility issue with the newly released WordPress 3.1. In the early release candidate versions of 3.1 these was some cool code changes to the way some of the page listing and bulk actions are handled. Seems between WP3.1rc2 and WP3.1rc3 these cool changes were purposely blocked. I had not noticed this until recently. This issue effected access to the Media-tags bulk action via the dropdown on the Media Library page. 
+
+Added a new section to the Settings panel. This new section allow you to completely change the labels used by Media-tags. Thanks to Laetitia Debruyne for writing and asking for some method to convert these to her language, French. This is not so much a translation thing it i18n. But with many plugins they register post types or taxonomies and the user has not ability to change these. Well, for Media-Tags now you do. 
+ 
+Many users have been requesting a way to display or filter all untagged media. This is coming in the next release. This release is mostly bug fixes. 
+
 = 3.0.3 =
 2010-12-16
+* More bugs fixed. 
+
 * Fixed code to allow searches within a media-tags term. For example your side http://www.somesite.com/media-tags/flags?s=xxx would return results from all media-tags terms not just within the 'flags' term. So had to add back in some of the filters for the Where and Join of the query (yuk!). The search is applied in default WordPress fashion to the attachment title an description fields. Will try to include the alt text and caption field in some later release. 
 
 Thanks to Carlos for commenting on my blog and bringing this to my attention. You can read the thread of comments here.  http://www.codehooligans.com/projects/wordpress/media-tags/#comment-71043
