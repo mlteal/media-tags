@@ -103,7 +103,8 @@ class MediaTags {
 		register_taxonomy(MEDIA_TAGS_TAXONOMY, MEDIA_TAGS_TAXONOMY, array(
 		    'hierarchical' 		=> false,
 		    'labels' 			=> $labels,
-			'show_ui' 			=> false,
+		    'show_ui'           => true,
+		    'show_in_menu'      => false,
 			'show_in_nav_menus'	=> true,
 			'show_tagcloud'		=> true,
 		    'query_var' 		=> true,
